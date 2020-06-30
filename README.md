@@ -1,2 +1,2 @@
 # Gaming-Store
-Simple C++ implementation of a gaming store.
+C++ implementation of a gaming store.
