@@ -1,35 +1,35 @@
 #include "sort.h"
 #include <cstring>
 #include <iostream>
+#include <product.h>
 
 using namespace std;
 
 void s11(product v[201], int &n)
 {
-    char numeprodus[256];
-    cout << "Intrebare de securitate:de unde a aparut numele companiei? ";
-    char raspuns[256];
+    char productName[256];
+    cout << "Security question: where did the company name come from? ";
+    char answer[256];
     cin.get();
-    cin.get(raspuns, 256);
+    cin.get(answer, 256);
     cout << endl;
-    if (strcmp(raspuns, "RAZvan alEX") == 0)
+    if (strcmp(answer, "RAZvan alEX") == 0)
     {
-        cout << "Produsul care urmeaza a fi sters= ";
-        cin >> numeprodus;
-        int poz = 0, i;
+        cout << "Product to be deleted= ";
+        cin >> productName;
+        int position = 0, i;
 
         for (i = 1; i <= n; i++)
-            if (strcmp(numeprodus, v[i].nume) == 0)
-                poz = i;
+            if (strcmp(productName, v[i].name) == 0)
+                position = i;
 
-        for (i = poz; i < n; i++)
+        for (i = position; i < n; i++)
             v[i] = v[i + 1];
         n--;
 
         cout << endl
-             << "Produsul a fost sters";
+             << "The product has been deleted";
     }
     else
-        cout << "Raspunsul este gresit.Echipa administrativa a fost "
-                "alertata de aceasta bresa de securitate.";
+        cout << "Wrong answer. The administrative team has been alerted of this security breach.";
 }

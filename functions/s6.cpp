@@ -1,15 +1,16 @@
 #include "sort.h"
 #include <cstring>
 #include <iostream>
+#include <product.h>
 
 using namespace std;
 
 void s6(product v[201], int n)
 {
     product aux, a[201], b[201];
-    // a=copie structura initiala
-    // b=structura temporara
-    // prod=matrice cu nume producatori
+    // a=copy of the initial structure
+    // b=temporary structure
+    // prod=array with manufacturer names
     char prod[20][20], auxx[20];
     int i = 1, j = 1, k = 1, l = 1, m = 1, z = 1;
     for (i = 1; i <= n; i++)
@@ -17,14 +18,14 @@ void s6(product v[201], int n)
 
     for (i = 1; i <= n; i++)
     {
-        char numep[20];
+        char manufacturerName[20];
         int ok = 1;
-        strcpy(numep, a[i].producator);
+        strcpy(manufacturerName, a[i].manufacturer);
         for (j = 1; j <= 19; j++)
-            if (stricmp(prod[j], numep) == 0)
+            if (stricmp(prod[j], manufacturerName) == 0)
                 ok = 0;
         if (ok)
-            strcpy(prod[k], numep), k++;
+            strcpy(prod[k], manufacturerName), k++;
     }
     k--;
     for (i = 1; i < k; i++)
@@ -36,8 +37,7 @@ void s6(product v[201], int n)
                 strcpy(prod[j], auxx);
             }
 
-    cout << "Acestea sunt produsele din promotia noastra,sortate alfabetic "
-            "dupa producator:"
+    cout << "These are the products in our promotion, sorted alphabetically by manufacturer:"
          << endl
          << endl;
 
@@ -45,16 +45,16 @@ void s6(product v[201], int n)
     {
         int nr = 1;
         for (j = 1; j <= n; j++)
-            if (stricmp(prod[i], a[j].producator) == 0)
+            if (stricmp(prod[i], a[j].manufacturer) == 0)
                 b[nr] = a[j], nr++;
         nr--;
 
         for (m = 1; m < nr; m++)
             for (z = m + 1; z <= nr; z++)
-                if (b[m].pret < b[z].pret)
+                if (b[m].price < b[z].price)
                     aux = b[m], b[m] = b[z], b[z] = aux;
-                else if (b[m].pret == b[z].pret)
-                    if (stricmp(b[m].nume, b[z].nume) >= 0)
+                else if (b[m].price == b[z].price)
+                    if (stricmp(b[m].name, b[z].name) >= 0)
                     {
                         aux = b[m];
                         b[m] = b[z];
@@ -62,9 +62,9 @@ void s6(product v[201], int n)
                     }
 
         for (l = 1; l <= nr; l++)
-            cout << b[l].nume << ' ' << b[l].tip << ' ' << b[l].producator
-                 << ' ' << b[l].manopera << ' ' << b[l].pret << ' '
-                 << b[l].stocmagazin << ' ' << b[l].stocfurnizor << endl;
+            cout << b[l].name << ' ' << b[l].type << ' ' << b[l].manufacturer
+                 << ' ' << b[l].labor << ' ' << b[l].price << ' '
+                 << b[l].storeStock << ' ' << b[l].supplierStock << endl;
 
         cout << endl;
     }

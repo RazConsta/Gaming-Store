@@ -1,36 +1,35 @@
 #include "sort.h"
 #include <cstring>
 #include <iostream>
+#include <product.h>
 
 using namespace std;
 
-void s13(product v[201], int n, int &asamblare, int &efectiv, int &ok)
+void s13(product v[201], int n, int &assemblyCost, int &actualCost, int &ok)
 {
-    char numeprodus[256];
-    asamblare = efectiv = ok = 0;
-    cout << "Pentru calcularea valorii totale a unei comenzi,introduceti "
-            "produsele dorite.Dupa ce ati introdus toate produsele dorite,"
-            "tastati <Terminat>"
+    char productName[256];
+    assemblyCost = actualCost = ok = 0;
+    cout << "To calculate the total value of an order, enter the desired products. After entering all the desired products, type <Finished>"
          << endl;
     do
     {
-        cin >> numeprodus;
+        cin >> productName;
         for (int i = 1; i <= n; i++)
-            if (strcmp(numeprodus, v[i].nume) == 0)
-                asamblare = asamblare + v[i].manopera, efectiv = efectiv + v[i].pret;
-    } while (strcmp(numeprodus, "Terminat") != 0);
+            if (strcmp(productName, v[i].name) == 0)
+                assemblyCost = assemblyCost + v[i].labor, actualCost = actualCost + v[i].price;
+    } while (strcmp(productName, "Finished") != 0);
 
-    if (asamblare)
+    if (assemblyCost)
     {
-        cout << "Doriti si montarea componentelor?" << endl;
+        cout << "Do you also want the components to be assembled?" << endl;
         char ans[3];
         cin.get();
         cin.get(ans, 3);
-        if (strcmp(ans, "Da") == 0)
+        if (strcmp(ans, "Yes") == 0)
         {
-            cout << "Cost asamblare=" << asamblare << " ";
+            cout << "Assembly cost=" << assemblyCost << " ";
             ok = 1;
         }
     }
-    cout << "Cost efectiv=" << efectiv;
+    cout << "Actual cost=" << actualCost;
 }

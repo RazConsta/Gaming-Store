@@ -3,8 +3,8 @@
 
 struct product
 {
-    char nume[50], tip[50], producator[50];
-    int manopera, pret, stocmagazin, stocfurnizor;
+    char name[50], type[50], manufacturer[50];
+    int labor, price, storeStock, supplierStock;
 };
 
 #endif // PRODUCT_H

@@ -1,6 +1,7 @@
 #include "sort.h"
 #include <cstring>
 #include <iostream>
+#include <product.h>
 
 using namespace std;
 
@@ -8,29 +9,29 @@ void s4(product v[201], int n)
 {
     char s[256];
     product a[201], aux;
-    cout << "Producatorul produsului cautat=";
+    cout << "Product manufacturer=";
     cin >> s;
-    int valmin, valmax, nr = 1;
-    cout << "Bugetul minim=";
-    cin >> valmin;
-    cout << "Bugetul maxim=";
-    cin >> valmax;
+    int minBudget, maxBudget, nr = 1;
+    cout << "Minimum budget=";
+    cin >> minBudget;
+    cout << "Maximum budget=";
+    cin >> maxBudget;
     cout << endl
-         << "Urmatoarele produse corespund cerintelor dumneavoastra:"
+         << "The following products meet your requirements:"
          << endl
          << endl;
 
     for (int i = 1; i <= n; i++)
-        if (valmin <= v[i].pret && valmax >= v[i].pret && strcmp(s, v[i].producator) == 0)
+        if (minBudget <= v[i].price && maxBudget >= v[i].price && strcmp(s, v[i].manufacturer) == 0)
             a[nr] = v[i], nr++;
     nr--;
 
     for (int i = 1; i < nr; i++)
         for (int j = i + 1; j <= nr; j++)
-            if (a[i].pret < a[j].pret)
+            if (a[i].price < a[j].price)
                 aux = a[i], a[i] = a[j], a[j] = aux;
-            else if (v[i].pret == v[j].pret)
-                if (stricmp(v[i].nume, v[j].nume) >= 0)
+            else if (v[i].price == v[j].price)
+                if (stricmp(v[i].name, v[j].name) >= 0)
                 {
                     aux = v[i];
                     v[i] = v[j];
@@ -38,7 +39,7 @@ void s4(product v[201], int n)
                 }
 
     for (int i = 1; i <= nr; i++)
-        cout << a[i].nume << ' ' << a[i].tip << ' ' << a[i].producator << ' '
-             << a[i].manopera << ' ' << a[i].pret << ' ' << a[i].stocmagazin
-             << ' ' << a[i].stocfurnizor << endl;
+        cout << a[i].name << ' ' << a[i].type << ' ' << a[i].manufacturer << ' '
+             << a[i].labor << ' ' << a[i].price << ' ' << a[i].storeStock
+             << ' ' << a[i].supplierStock << endl;
 }

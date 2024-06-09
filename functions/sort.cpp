@@ -1,5 +1,6 @@
 #include "sort.h"
 #include <cstring>
+#include <product.h>
 
 void sort(product v[], int n)
 {
@@ -8,18 +9,18 @@ void sort(product v[], int n)
     for (i = 1; i < n; i++)
     {
         j = i;
-        while (strcmp(v[j].tip, v[j + 1].tip) == 0)
+        while (j < n && strcmp(v[j].type, v[j + 1].type) == 0)
             j++;
         for (k = i; k < j; k++)
             for (l = k + 1; l <= j; l++)
-                if (v[k].pret < v[l].pret)
+                if (v[k].price < v[l].price)
                 {
                     aux = v[k];
                     v[k] = v[l];
                     v[l] = aux;
                 }
-                else if (v[k].pret == v[l].pret)
-                    if (stricmp(v[k].nume, v[l].nume) > 0)
+                else if (v[k].price == v[l].price)
+                    if (stricmp(v[k].name, v[l].name) > 0)
                     {
                         aux = v[k];
                         v[k] = v[l];

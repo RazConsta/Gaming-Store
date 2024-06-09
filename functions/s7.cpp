@@ -1,38 +1,36 @@
 #include "sort.h"
 #include <cstring>
 #include <iostream>
+#include <product.h>
 
 using namespace std;
 
 void s7(product v[201], int n)
 {
-
-    char numeprodus[256];
-    int stoc1, stoc2;
-    cout << "Intrebare de securitate:de unde a aparut numele companiei? ";
-    char raspuns[256];
+    char productName[256];
+    int storeStock, supplierStock;
+    cout << "Security question: where did the company name come from? ";
+    char answer[256];
     cin.get();
-    cin.get(raspuns, 256);
+    cin.get(answer, 256);
     cout << endl;
-    if (strcmp(raspuns, "RAZvan alEX") == 0)
+    if (strcmp(answer, "RAZvan alEX") == 0)
     {
-        cout << "Introduceti numele produsului ";
-        cin >> numeprodus;
+        cout << "Enter the product name ";
+        cin >> productName;
         cout << endl;
-        cout << "Introduceti valorile noi ale stocului din magazin si "
-                "stocului furnizor ";
-        cin >> stoc1 >> stoc2;
+        cout << "Enter the new values for the store stock and supplier stock ";
+        cin >> storeStock >> supplierStock;
         cout << endl
-             << "Stocul a fost actualizat.";
+             << "Stock has been updated.";
 
         for (int i = 1; i <= n; i++)
-            if (strcmp(v[i].nume, numeprodus) == 0)
+            if (strcmp(v[i].name, productName) == 0)
             {
-                v[i].stocmagazin = stoc1;
-                v[i].stocfurnizor = stoc2;
+                v[i].storeStock = storeStock;
+                v[i].supplierStock = supplierStock;
             }
     }
     else
-        cout << "Raspuns gresit.Echipa administrativa a fost alertata de "
-                "aceasta bresa de securitate.";
+        cout << "Wrong answer. The administrative team has been alerted of this security breach.";
 }
