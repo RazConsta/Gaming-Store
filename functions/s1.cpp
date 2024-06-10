@@ -8,7 +8,7 @@ using namespace std;
 
 void s1(product v[201], int n)
 {
-    sort(v, v + n); // Call the sort function with the correct arguments
+    sort(v, n); // Call the sort function with the correct arguments
     cout << "These are the products in our promotion:" << endl;
     for (int i = 1; i <= n; i++)
     {

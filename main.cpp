@@ -17,7 +17,7 @@
 #include "headers/s13.h"
 #include "headers/s14.h"
 #include "headers/s15.h"
-#include "headers/afisare.h"
+#include "headers/display.h"
 #include "headers/welcomeMessage.h"
 using namespace std;
 
@@ -28,19 +28,19 @@ int main()
 	// HDD = Hard Disk Drive
 	// SSD = Solid State Drive
 
-	int n = 1, op, asamblare = 0, efectiv = 0, ok = 0;
+	int n = 1, op, assembly = 0, actual = 0, ok = 0;
 	char ans[3];
 	product v[201];
 
-	// Read produc catalog from file
+	// Read product catalog from file
 	ifstream f("products.in");
-	while (f >> v[n].nume >> v[n].tip >> v[n].producator >> v[n].manopera >> v[n].pret >> v[n].stocmagazin >> v[n].stocfurnizor)
+	while (f >> v[n].name >> v[n].type >> v[n].manufacturer >> v[n].labor >> v[n].price >> v[n].storeStock >> v[n].supplierStock)
 		n++;
 	n--;
 
 	welcomeMessage();
 
-	afisare();
+	display();
 
 	sort(v, n);
 
@@ -52,64 +52,64 @@ int main()
 		if (op == 1)
 			s1(v, n), cout << endl
 						   << endl,
-				afisare();
+				display();
 		if (op == 2)
 			s2(v, n), cout << endl
 						   << endl,
-				afisare();
+				display();
 		if (op == 3)
 			s3(v, n), cout << endl
 						   << endl,
-				afisare();
+				display();
 		if (op == 33)
 			s33(v, n), cout << endl
 							<< endl,
-				afisare();
+				display();
 		if (op == 4)
 			s4(v, n), cout << endl
 						   << endl,
-				afisare();
+				display();
 		if (op == 5)
 			s5(v, n), cout << endl
 						   << endl,
-				afisare();
+				display();
 		if (op == 6)
 			s6(v, n), cout << endl
 						   << endl,
-				afisare();
+				display();
 		if (op == 7)
 			s7(v, n), cout << endl
 						   << endl,
-				afisare();
+				display();
 		if (op == 8)
 			s8(v, n), cout << endl
 						   << endl,
-				afisare();
+				display();
 		if (op == 9)
 			s9(v, n), cout << endl
 						   << endl,
-				afisare();
+				display();
 		if (op == 10)
 			s10(v, n), cout << endl
 							<< endl,
-				afisare();
+				display();
 		if (op == 11)
 			s11(v, n), cout << endl
 							<< endl,
-				afisare();
+				display();
 
 		if (op == 13)
-			s13(v, n, asamblare, efectiv, ok), cout << endl
-													<< endl,
-				afisare();
+			s13(v, n, assembly, actual, ok), cout << endl
+												  << endl,
+				display();
 		if (op == 14)
-			s14(asamblare, efectiv, ok), cout << endl
-											  << endl,
-				afisare();
+			s14(assembly, actual, ok), cout << endl
+											<< endl,
+				display();
 		if (op == 15)
-			s15(v, n, asamblare, efectiv), cout << endl
-												<< endl,
-				afisare();
+			s15(v, n, assembly, actual), cout << endl
+											  << endl,
+				display();
 
 	} while (op != 0);
 
